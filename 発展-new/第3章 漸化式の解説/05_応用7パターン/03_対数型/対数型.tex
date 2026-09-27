@@ -35,6 +35,7 @@
     \item $\displaystyle a_1=\frac{1}{2},\quad a_{n+1}=\frac{1}{a_n}$
     \item $\displaystyle a_1=1,\quad a_{n+1}=2^na_n$
     \item $\displaystyle a_1=5,\quad a_{n+1}=a_n^2-2a_n+2$
+    \item $\displaystyle a_1=2,\quad a_{n+1}=\frac{a_n^2}{2^n}$
   \end{enumerate}
 
   \noindent\textbf{【方針】}
@@ -43,6 +44,7 @@
     \item 一見すると分数型(後述)のように見えますが,対数型として解くことができます.
     \item $f(n)=2^n$が指数関数なので,対数を取ると和の形に帰着できます.
     \item うまく変形すると対数型になります.
+    \item 両辺の対数を取ると,二次の漸化式が一次の漸化式に変わり,さらに等差数列の和を使って解くことができます.
   \end{enumerate}
 
   \noindent\textbf{【解答】}
@@ -51,6 +53,7 @@
     \item $a_n=2^{(-1)^{n}}$
     \item $a_n=2^{\frac{n(n-1)}{2}}$
     \item $a_n=2^{2^n}+1$
+    \item $\displaystyle a_n=2^{n-1}-n+1$
   \end{enumerate}
 
   \noindent\textbf{【解法】}
