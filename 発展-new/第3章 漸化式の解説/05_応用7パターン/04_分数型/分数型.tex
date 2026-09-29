@@ -4,6 +4,7 @@
   \subsubsection{逆数型  \, $\displaystyle a_{n+1}=\frac{pa_n}{qa_n+r}$}
     では逆数型の漸化式について扱っていこう.
     この漸化式の解法はかなり技巧的な式変形が要求される.
+    以下では,$p\ne0$かつ$a_n\ne0$であり,$qa_n+r\ne0$として議論する.
     実際に見せよう.
     \begin{align*}
       &a_{n+1}=\frac{pa_n}{qa_n+r}
@@ -17,7 +18,7 @@
     \begin{align*}
       &b_{n+1}=\frac{r}{p}b_n+\frac{q}{p}
     \end{align*}
-    このようにすることで,特性方程式型の漸化式になる.
+    このようにすることで,特性方程式型の漸化式に帰着できる.
 
     \noindent \textbf{【例題】}
     \begin{enumerate}[label=(\arabic*),parsep=3pt]
@@ -28,7 +29,7 @@
     \noindent\textbf{【方針】}
     \begin{enumerate}[label=(\arabic*),parsep=3pt]
       \item とにかく基本に忠実に解きましょう.
-      \item 基本に忠実に.
+      \item 逆数を取って一次の漸化式に帰着させましょう.
     \end{enumerate}
 
     \noindent\textbf{【解答】}
@@ -78,13 +79,13 @@
 
     数学における基本的な指針として,既知の形に帰着させるというものがある.
     本書で言う,"きれい"な形にするということである.
-    今回の場合,もっとも一次分数型に近い漸化式は逆数型であることから,逆数型に帰着させることで解けると予想しよう.
+    今回の場合,もっとも一次分数型に近い漸化式は逆数型であるから,逆数型に帰着させることで解くことを考える.
     \[
       a_{n+1}=\frac{pa_n+q}{ra_n+s} \Leftrightarrow b_{n+1}=\frac{tb_n}{u b_n+v} 
     \]
     となるような$b_n$と$t,u,v$の組があればよい.
     ここでも特性方程式型のアイデアは活きる.
-    この時$b_n$は$a_n$について$f(n)$の形を含まないから\,$b_n=a_n-\alpha$と置くことができる. 
+    この漸化式は$n$に明示的に依存しない(すなわち$a_{n+1}=F(a_n)$の形をしている)から,3.5.1と同様に不動点$\alpha$(すなわち$\alpha=\dfrac{p\alpha+q}{r\alpha+s}$を満たす値)を基準に\,$b_n=a_n-\alpha$と置くことができる.
     また,\,$b_n=a_n-\alpha$から$a_n=b_n+\alpha$が言える.
     ひとまずこの$\alpha$を求めていこう.
     そのために
@@ -136,16 +137,16 @@
     \]
     という二次方程式の解なのである.
     
-    ここで,この二次方程式が異なる2つの解$\alpha,\beta$を持つ場合を考えよう.
-    ここでの$\alpha,\beta$は先程の$\alpha$が取りうる実数の2解を別々に書いたものと言う認識で問題ない.
-    解と係数の関係より,
+    ここで,この二次方程式が異なる2つの実数解$\alpha,\beta$を持つ場合を考えよう.
+    ここでの$\alpha,\beta$は先程の$\alpha$が取りうる2つの実数解を別々に書いたものである.
+    解と係数の関係から,
     \[
       \alpha+\beta=\frac{p-s}{r},
       \qquad
       \alpha\beta=-\frac qr
     \]
     である.
-    したがって,\,$\alpha,\beta$を個別に解の公式で求めなくても,
+    したがって,$\alpha,\beta$を個別に解の公式で求めなくても,
     \[
       x^2-(\alpha+\beta)x+\alpha\beta
       =
@@ -153,13 +154,14 @@
     \]
     と書くことができる.
 
+    ここで,$\alpha,\beta$を使った変形を実際に行ってみよう.
     この二次式が重要なのは,\,$\alpha,\beta$を用いて
     \[
       \frac{a_{n+1}-\alpha}{a_{n+1}-\beta}
     \]
-    という形を作ることができるからである.
+    という形を作ることができるからである.この変形により,一次分数型の漸化式を等比数列に帰着できるのである.
 
-    実際,
+    では実際に,
     \[
       a_{n+1}=\frac{pa_n+q}{ra_n+s}
     \]
@@ -170,26 +172,26 @@
       \frac{(p-r\alpha)a_n+q-s\alpha}{(p-r\beta)a_n+q-s\beta}
     \end{align*}
     
-    ここで$\alpha$は
+    ここで$\alpha$は不動点なので,
     \[
       r\alpha^2+(s-p)\alpha-q=0
     \]
     を満たすので,
     \[
       q-s\alpha
-      =\alpha(r\alpha+s-p)
+      =-\alpha(p-r\alpha)
     \]
-    よって,
+    したがって,
     \[
       (p-r\alpha)a_n+q-s\alpha
       =(p-r\alpha)(a_n-\alpha)
     \]
-    $\beta$についても同様に,
+    同様に$\beta$についても,
     \[
       (p-r\beta)a_n+q-s\beta
       =(p-r\beta)(a_n-\beta)
     \]
-    したがって,
+    よって,
     \begin{align*}
       \frac{a_{n+1}-\alpha}{a_{n+1}-\beta}
       &=
@@ -207,8 +209,8 @@
       =
       \frac{p-r\alpha}{p-r\beta}b_n
     \]
-    となり,等比数列が得られる.
-    $\alpha$と$\beta$の大小関係は,解の大小関係を要求されていないことから自由にとって良い.
+    となる.したがって,\,$b_n$は等比数列である.
+    $\alpha$と$\beta$の大小関係は,解の大小関係を要求されていないことから自由に選んでよい.
     つまり,\,1次分数型漸化式では,
     \[
       a_{n+1}=\frac{pa_n+q}{ra_n+s}
@@ -217,32 +219,33 @@
     \[
       \frac{a_n-\alpha}{a_n-\beta}
     \]
-    という「$\alpha,\beta$からの位置の比」に置き換えることで,
+    という「$\alpha,\beta$からの距離の比」に置き換えることで,
     等比数列に変えることができる.
 
-    そして$\alpha,\beta$は,
+    そして,\,$\alpha,\beta$は,
     \[
       rx^2+(s-p)x-q=0
     \]
-    の2解として自然に現れる.
+    の異なる2解として自然に現れる.
     
-    したがって$\alpha$は,もとの漸化式の$a_n$を形式的に$\alpha$に置き換えたときにも値が変化しない数,すなわち不動点である.
-    $\beta$についても同じことがいえる.
+    したがって\,$\alpha,\beta$は,もとの漸化式の$a_n$を形式的に$\alpha,\beta$に置き換えたときにも値が変化しない数,すなわち不動点である.
     
     議論が長くなったので,ここで解法をまとめておこう.
     \[
       a_{n+1}=\frac{pa_n+q}{ra_n+s} 
     \]
-    の形で表される漸化式に対して,
+    の形で表される漸化式に対して,ただし$ps-qr\ne0$とし,
+    $r\ne0$とする.また,以下では$a_n\ne-\dfrac sr$(漸化式の分母が$0$にならないこと)を仮定する.
+    さらに,$a_1\ne\beta$とする.
     \[
       x= \frac{px+q}{rx+s} \Leftrightarrow rx^2+(s-p)x-q=0
     \]
-    を解き,その2解を$\alpha,\beta$とする.
+    を解き,その異なる2解を$\alpha,\beta$とする.
     $r\neq0$であれば,
     \[
       x^2+\frac{s-p}{r}x-\frac qr=0
     \]
-    と書けるので,解と係数の関係から
+    と書けるので,解と係数の関係より,
     \[
       \alpha+\beta=\frac{p-s}{r},
       \qquad
@@ -313,6 +316,32 @@
     \end{align*}
     (＊)を代入して$a_n$を求めることができる.
 
+    なお,$rx^2+(s-p)x-q=0$が重解$\alpha$を持つ場合は,$\beta$と異なる2つの不動点を取れないため,上の議論はそのまま使えない.
+    このときは$\alpha=\dfrac{p-s}{2r}$,すなわち$s=p-2r\alpha$が成り立つため,
+    \[
+      c=p-r\alpha=r\alpha+s\ne0
+    \]
+    とおくと,
+    \[
+      a_{n+1}-\alpha
+      =\frac{c(a_n-\alpha)}{r(a_n-\alpha)+c}
+    \]
+    となる.したがって,
+    \[
+      \frac{1}{a_{n+1}-\alpha}
+      =\frac{1}{a_n-\alpha}+\frac{r}{c}
+    \]
+    であるから,右辺も含めて$1/(a_n-\alpha)$について考えれば等差数列に帰着できる.
+    ここで$b_n=a_n-\alpha$とおくと,
+    \[
+      b_{n+1}=\frac{cb_n}{rb_n+c}
+    \]
+    という逆数型漸化式に帰着する(先ほどの一般式で$\beta=\alpha$とした場合に対応する).したがって両辺の逆数を取れば
+    \[
+      \frac1{b_{n+1}}=\frac1{b_n}+\frac rc
+    \]
+    という等差数列が得られ,ここから$a_n$を求めることができる(具体的な計算は例題(3)を参照).
+
     \noindent \textbf{【例題】}
     \begin{enumerate}[label=(\arabic*),parsep=3pt]
       \item $\displaystyle a_1=3,\, a_{n+1}=\frac{2a_n+1}{a_n+2}$
@@ -323,9 +352,9 @@
 
     \noindent\textbf{【方針】}
     \begin{enumerate}[label=(\arabic*),parsep=3pt]
-      \item 最も基本的な例です.先程の議論に習って解きましょう.
+      \item 最も基本的な例です.先程の議論に倣って解きましょう.
       \item 同様に不動点$\alpha,\beta$を求めましょう.今回は片方が負の値になります.
-      \item 今回は不動点の方程式が重解になります.それでもやることは同じです.
+      \item 今回は不動点の方程式が重解になります.\,$\dfrac{a_n-\alpha}{a_n-\beta}$は使えないので,\,$b_n=a_n-\alpha$と置いてから逆数型に帰着させる別の手法を使います.
       \item このような形も一次分数型です.解と係数の関係を活用して解きましょう.
     \end{enumerate}
 
@@ -424,7 +453,7 @@
             \[
             b_n=a_n-3
             \]
-            とおくと
+            とおくと,
             \begin{align*}
               b_{n+1}&=a_{n+1}-3\\
               &=\dfrac{4a_{n}-9}{a_{n}-2}-3\\
@@ -435,7 +464,7 @@
             \begin{align*}
               \frac{1}{b_{n+1}}&=\dfrac{b_{n}+1}{b_{n}}
             \end{align*}
-            $b_1=\dfrac{1}{2}$より,
+            $b_1=a_1-3=2$,すなわち$\dfrac1{b_1}=\dfrac12$より,
             \begin{align*}
               &\frac{1}{b_n}=\frac{1}{2}+(n-1)\cdot 1\\
               &\frac{1}{b_n}=\frac{2n-1}{2}\\
@@ -458,7 +487,7 @@
             \[
               \alpha+\beta=1,\, \quad \alpha\beta=-1\tag*{\(\cdots\) (2)}
             \]
-            が解と係数の関係から成り立つ.従って
+            が解と係数の関係から成り立つ.したがって,
             \begin{align*}
               b_{n+1}&=\frac{a_{n+1}-\alpha}{a_{n+1}-\beta}\\
               &=\cfrac{\cfrac{a_n+1}{a_n}-\alpha}{\cfrac{a_n+1}{a_n}-\beta}\\
@@ -470,13 +499,17 @@
               \frac{(1-\alpha)a_n+1}{(1-\beta)a_n+1}&=\frac{\beta a_n+1}{\alpha a_n+1}\\
               &=\frac{\beta a_n-\alpha\beta}{\alpha a_n-\alpha\beta}\\
               &=\frac{\beta (a_n-\alpha)}{\alpha (a_n-\beta)}\\
-              &=b_{n+1}=\frac{\beta}{\alpha}b_n\\
+              &=\frac{\beta}{\alpha}b_n
             \end{align*}
+            よって,
+            \[
+              b_{n+1}=\frac{\beta}{\alpha}b_n
+            \]
             初項$b_1$は,
             \begin{align*}
               b_1=\frac{a_1-\alpha}{a_1-\beta}=\frac{1-\alpha}{1-\beta}=\frac{\beta}{\alpha}
             \end{align*}
-            従って
+            したがって,
             \[
               b_n=\left(\frac{\beta}{\alpha}\right)^n
             \]
@@ -488,16 +521,18 @@
             \[
               a_{n}=\frac{\beta b_{n}-\alpha}{b_{n}-1}
             \]
-            従って
+            したがって,
             \begin{align*}
               a_{n}&=\cfrac{\beta \left(\cfrac{\beta}{\alpha}\right)^n-\alpha}{\left(\cfrac{\beta}{\alpha}\right)^n-1}  \\
               &=\frac{\beta^{n+1}-\alpha^{n+1}}{\beta^n-\alpha^n}\\
               &=\cfrac{\left(\cfrac{1-\sqrt{5}}{2}\right)^{n+1}-\left(\cfrac{1+\sqrt{5}}{2}\right)^{n+1}}{\left(\cfrac{1-\sqrt{5}}{2}\right)^n-\left(\cfrac{1+\sqrt{5}}{2}\right)^n}
             \end{align*}        
     \end{enumerate}
-  余談にはなるが,最後の問題はフィボナッチ数列の2項間の比の極限値は黄金比$\frac{1\sqrt{5}}{2}$に一致する.
-  また,ここから派生したリュカ数列やトリボナッチ数列という数列も存在する.
-  これらは黄金比を中心として様々な興味深い性質を持つが,本書の趣旨から外れてしまうため割愛する.
+  余談にはなるが,最後の問題はフィボナッチ数列の2項間の比の極限値は黄金比$\dfrac{1+\sqrt{5}}{2}$に一致する.
+  実際,\,$a_n=\dfrac{F_{n+1}}{F_n}$(ただし$F_n$は$F_1=F_2=1$から定まるフィボナッチ数列)であることが,同じ漸化式$a_{n+1}=1+\dfrac1{a_n}$から確かめられる.
+  また,ここから派生したリュカ数列も同じ特性方程式$x^2=x+1$を持つため,同じ黄金比に収束する.
+  一方,同様に漸化式から派生する数列にトリボナッチ数列があるが,こちらは特性方程式が3次$(x^3=x^2+x+1)$になり,その極限値(トリボナッチ定数,約$1.839$)は黄金比とは異なる.
+  これらは本書の趣旨から外れてしまうため割愛する.
 
   加えて,このタイプの漸化式は帰納法によって示すことが比較的容易なパターンが存在する.
   例えば(3)は解答の一般項から分かるように,分母分子それぞれが一次関数の形で書かれているため,想像しやすい.
@@ -517,7 +552,7 @@
       \[
         a_1=\frac{5}{1},\,a_2=\frac{11}{3},\,a_3=\frac{17}{5},\,a_4=\frac{23}{7},\,a_5=\frac{29}{9}
       \]
-      となる.分母が2づつ,分子が6づつ増えていることから,一般項は
+      となる.分母が2ずつ,分子が6づつ増えていることから,一般項は
       \[
         a_n=\frac{6n-1}{2n-1}
       \]
@@ -534,8 +569,12 @@
       \[
         \frac{6-1}{2-1}=5
       \]
-      従って成立する.\\
-      とある正の整数$k$によって,\,$n=k$が成り立つ時,\,$n=k+1$は,
+      よって成立する.\\
+      ある正の整数$k$について,$n=k$が成り立つと仮定する.このとき,
+      \[
+        n=k+1
+      \]
+      のとき,
       \begin{align*}
         a_{k+1}&=\frac{4a_{k}-9}{a_{k}-2}\\
         &=\cfrac{4\cdot \cfrac{6k-1}{2k-1}-9}{\cfrac{6k-1}{2k-1}-2}\\
@@ -543,7 +582,7 @@
         &=\frac{6k+5}{2k+1}\\
         &=\frac{6(k+1)-1}{2(k+1)-1}
       \end{align*}
-      従って成立する.
+      したがって,$n=k+1$でも成立する.
       以上より
       \[
         a_n=\frac{6n-1}{2n-1}

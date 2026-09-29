@@ -9,7 +9,8 @@
   \[
     a_{n+1}=pa_n^q
   \]
-  について,両辺の対数を取ると
+  ただし,対数を取るために$a_n>0$とし,底に選ぶ$p$も$p>0,\,p\ne1$を満たすとする.
+  この式について,両辺の対数を取ると
   \begin{align*}
     \log_p{a_{n+1}}&=\log_p{pa_n^q}\\
     &=\log_p{p}+\log_p{a_n^q}\\
@@ -32,24 +33,27 @@
   \begin{enumerate}[label=(\arabic*),parsep=3pt]
     \item $\displaystyle a_1=2,\quad a_{n+1}=2a_n^2$
     \item $\displaystyle a_1=\frac{1}{2},\quad a_{n+1}=\frac{1}{a_n}$
-    \item $\displaystyle a_1=1,\quad a_{n+1}=(n+1)a_n$
+    \item $\displaystyle a_1=1,\quad a_{n+1}=2^na_n$
     \item $\displaystyle a_1=5,\quad a_{n+1}=a_n^2-2a_n+2$
+    \item $\displaystyle a_1=2,\quad a_{n+1}=\frac{a_n^2}{2^n}$
   \end{enumerate}
 
   \noindent\textbf{【方針】}
   \begin{enumerate}[label=(\arabic*),parsep=3pt]
     \item 両辺の底を$2$とする対数を取り,\,$b_n=\log_2a_n$とおいて一次の漸化式に変形します.その結果,漸化式は特性方程式型になります.
     \item 一見すると分数型(後述)のように見えますが,対数型として解くことができます.
-    \item 階比型に見えますが,対数型としても解けます.
+    \item $f(n)=2^n$が指数関数なので,対数を取ると和の形に帰着できます.
     \item うまく変形すると対数型になります.
+    \item 両辺の対数を取ると,二次の漸化式が一次の漸化式に変わり,さらに等差数列の和を使って解くことができます.
   \end{enumerate}
 
   \noindent\textbf{【解答】}
   \begin{enumerate}[label=(\arabic*),parsep=3pt]
-    \item $\displaystyle a_n=2^{3\cdot2^{n-1}-2}$
+    \item $\displaystyle a_n=2^{2^{n}-1}$
     \item $a_n=2^{(-1)^{n}}$
-    \item $a_n=n!$
+    \item $a_n=2^{\frac{n(n-1)}{2}}$
     \item $a_n=2^{2^n}+1$
+    \item $\displaystyle a_n=2^{n-1}-n+1$
   \end{enumerate}
 
   \noindent\textbf{【解法】}
@@ -59,9 +63,8 @@
           \begin{align*}
             \log_2a_{n+1}
               &=\log_2{2a_n^2}\\
-              &=2\log_2{2a_n}\\
-              &=2(\log_2{2}+\log_2{a_n})\\
-              &=2\log_2{a_n}+2
+              &=\log_2{2}+\log_2{a_n^2}\\
+              &=2\log_2{a_n}+1
           \end{align*}
           ここで
           \[
@@ -69,12 +72,12 @@
           \]
           とおくと,
           \begin{align*}
-            &b_{n+1}=2b_n+2\\
-            &b_{n+1}+2=2(b_n+2)
+            &b_{n+1}=2b_n+1\\
+            &b_{n+1}+1=2(b_n+1)
           \end{align*}
           ここで
           \[
-            c_n=b_n+2
+            c_n=b_n+1
           \]
           とおくと,
           \[
@@ -82,16 +85,16 @@
           \]
           $c_1$は,
           \[
-            c_1=b_1+2=\log_2{a_1}+2=\log_2{2}+2=1+2=3
+            c_1=b_1+1=\log_2{a_1}+1=\log_2{2}+1=1+1=2
           \]
           従って,
           \begin{align*}
-            &c_n=3\cdot2^{n-1}\\
-            &b_n+2=3\cdot2^{n-1}\\
-            &b_n=3\cdot2^{n-1}-2\\
-            &a_n=2^{3\cdot2^{n-1}-2}
+            &c_n=2\cdot2^{n-1}=2^n\\
+            &b_n+1=2^n\\
+            &b_n=2^n-1\\
+            &a_n=2^{2^{n}-1}
           \end{align*}
-    \item $\displaystyle a_1=2,\quad a_{n+1}=\frac{1}{a_n}$\\
+    \item $\displaystyle a_1=\frac12,\quad a_{n+1}=\frac{1}{a_n}$\\
           与式の両辺の底を2とする対数を取ると,
           \begin{align*}
             &\log_2{a_{n+1}}=\log_2{\frac{1}{a_n}}\\
@@ -102,17 +105,16 @@
             &\log_2{a_n}=(-1)^{n}\\
             &\therefore \quad a_n=2^{(-1)^{n}}
           \end{align*}
-    \item $\displaystyle a_1=1,\quad a_{n+1}=(n+1)a_n$\\
-          両辺の自然対数を取って
+    \item $\displaystyle a_1=1,\quad a_{n+1}=2^na_n$\\
+          両辺の自然対数を取ると
           \[
-            \log a_{n+1}=\log{n+1}+\log a_n
+            \log a_{n+1}=n\log2+\log a_n
           \]
           したがって
           \begin{align*}
-            \log a_n&=\log a_1 + \log{2}+\cdots+ \log{n}\\
-            &=\log 1 + \log{2}+\cdots +\log{n}\\
-            &=\log n!\\
-            &\therefore \quad a_n=n!
+            \log a_n&=\log a_1+(1+2+\cdots+(n-1))\log2\\
+            &=\frac{(n-1)n}{2}\log2\\
+            &\therefore \quad a_n=2^{\frac{n(n-1)}{2}}
           \end{align*}
     \item $\displaystyle a_1=5,\quad a_{n+1}=a_n^2-2a_n+2$\\
           与式を変形して

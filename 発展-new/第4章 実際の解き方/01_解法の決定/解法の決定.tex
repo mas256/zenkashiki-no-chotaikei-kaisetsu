@@ -2,17 +2,19 @@
 
   \section{解法の決定}
     以下にここまでで扱った解法を体系的にまとめあげ,実際に問題と相対した時にどこに注目すればよいか,なにを考えればよいかをまとめた.
-    チャートは3つあり,1から順に進めていく良い.
+    チャートは3つあり,1から順に進めていくと良い.
     \noindent \textbf{【チャート1】}
     \begin{enumerate}
       \item 初項の値\\
             $\rightarrow$ 不自然なら特殊関数型
       \item 何項間の漸化式か\\
-            $\rightarrow$ $n$項間$(n\ge3)$なら不動点を求めて$n-1$項間に
+            $\rightarrow$ $n$項間$(n\ge3)$なら特性方程式を解いて$n-1$項間に
       \item 総和を含むか\\
             $\rightarrow$ $S_{n+1}$と$S_n$の差を取って$a_{n+1}$を生み出す.
       \item 連立漸化式か\\
             $\rightarrow$ 連立漸化式なら連立漸化式型として解く
+      \item $a_n$と$\dfrac{(\text{定数})}{a_n}$の平均のような形をしているか\\
+            $\rightarrow$ ニュートン法型として解く(3.7.3)
       \item 上記以外の形か\\
             $\rightarrow$ チャート2へ
     \end{enumerate}
@@ -20,12 +22,10 @@
 
     \noindent \textbf{【チャート2】}
     \begin{enumerate}
-        \item 分数型か（分子分母両方に$a_n$がいるか）\\
+        \item 分数型か（分子か分母に$a_n$がいるか.分母だけの場合も含む）\\
               $\rightarrow$ $a_n$の次数が1なら分数型として解く.\,2次以上なら対数型か特殊関数型.
         \item $a_n$の係数\\
               $\rightarrow$ 定数なら特性方程式型か階差等比複合型.\,$n$に関する式の場合は階比型または対数型として解く.
-        \item $a_n$の次数\\
-              $\rightarrow$ 2次以上なら対数型か特殊関数型.
         \item $f(n)$が含まれている時\\
               $\rightarrow$ チャート3へ
     \end{enumerate}
@@ -34,8 +34,8 @@
     \begin{enumerate}
       \item $a_n$に掛けられている時\\
             $\rightarrow$ 対数型か階比型.
-      \item $a_n$に足されている時\\
-            $\rightarrow$ 階差型
+      \item $a_n$に(係数がついた上で)$f(n)$が足されている時\\
+            $\rightarrow$ 係数が$1$なら階差型.\,$1$でなければ階差等比複合型
       \item 式全体が積や商のみで構成されている時\\
             $\rightarrow$ 対数型
       \item $a_n$の項が複数存在して掛けられている時\\
