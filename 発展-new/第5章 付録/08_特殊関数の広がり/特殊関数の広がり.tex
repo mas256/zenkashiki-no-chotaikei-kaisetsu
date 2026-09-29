@@ -724,15 +724,15 @@ $xI-J_n$ の行列式を $D_n(x)$ とすると,行列式の展開から
 \begin{tabular}{|c|p{2.3cm}|p{1.6cm}|p{2.1cm}|}
   \hline
   対象 & 漸化式 & 生成の仕方 & 自然な問題\\ \hline
-  $\Gamma$ & $\Gamma(x+1)=x\Gamma(x)$
+  $\Gamma$ & \shortstack[l]{$\Gamma(x+1)$\\$=x\Gamma(x)$}
     & 積分 & 階乗の連続化\\ \hline
-  $T_n$ & $T_{n+1}=2xT_n-T_{n-1}$
+  $T_n$ & \shortstack[l]{$T_{n+1}$\\$=2xT_n$\\$-T_{n-1}$}
     & 三角関数・生成関数 & 区間上の近似\\ \hline
-  $P_n$ & $(n{+}1)P_{n+1}=(2n{+}1)xP_n-nP_{n-1}$
+  $P_n$ & \shortstack[l]{$(n{+}1)P_{n+1}$\\$=(2n{+}1)xP_n$\\$-nP_{n-1}$}
     & 母関数 & 球面の対称性\\ \hline
-  $H_n$ & $H_{n+1}=2xH_n-2nH_{n-1}$
-    & ガウス関数の微分 & 正規分布・振動\\ \hline
-  $J_n$ & $J_{n+1}=\frac{2n}{x}J_n-J_{n-1}$
+  $H_n$ & \shortstack[l]{$H_{n+1}$\\$=2xH_n$\\$-2nH_{n-1}$}
+    & ガウス関数の微分 & \shortstack[l]{正規分布\\振動}\\ \hline
+  $J_n$ & \shortstack[l]{$J_{n+1}$\\$=\frac{2n}{x}J_n$\\$-J_{n-1}$}
     & 生成関数 & 円筒の波\\ \hline
 \end{tabular}
 \end{center}
@@ -799,14 +799,16 @@ $xI-J_n$ の行列式を $D_n(x)$ とすると,行列式の展開から
 \subsection*{まとめ}
 
 この付録では,特殊関数を一覧として紹介するのではなく,
-\[
-  \text{階乗の拡張}
+\begin{align*}
+  &\text{階乗の拡張}
   \longrightarrow
-  \text{三角関数の多項式化}
+  \text{三角関数の多項式化}\\
+  &\qquad
   \longrightarrow
   \text{直交性}
   \longrightarrow
   \text{波と行列}
-\]
+\end{align*}
+
 という流れを追った.各関数は,漸化式を解くために選んだ表現が,
 積分,微分方程式,直交性,行列,波動へ広がった結果として現れている.

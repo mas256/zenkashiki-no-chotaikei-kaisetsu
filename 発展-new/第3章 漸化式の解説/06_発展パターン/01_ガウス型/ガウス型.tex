@@ -141,14 +141,14 @@
     ここで求めたいのは$a_n=a_1+\displaystyle\sum_{k=1}^{n-1}b_k$であるから,\,$k=n-1$までの和を考える.
     \,$l=\lfloor\sqrt{n-1}\rfloor$(すなわち$k=n-1$が属する群番号)とおくと,\,$k=1$から$l^2-1$までで第$1$群から第$l-1$群までがすべて出そろい,残る$k=l^2,l^2+1,\ldots,n-1$の$n-l^2$個が第$l$群の途中までにあたる.
     したがって,
-    \[
-      \sum_{k=1}^{n-1}b_k
-      =\sum_{j=1}^{l-1}(2j^2+j)+l(n-l^2)
-      =\frac{(l-1)l(4l+1)}{6}+l(n-l^2)
-    \]
+    \begin{align*}
+      \sum_{k=1}^{n-1}b_k&=\sum_{j=1}^{l-1}(2j^2+j)+l(n-l^2)\\
+      &=\frac{(l-1)l(4l+1)}{6}+l(n-l^2)
+    \end{align*}
+      
     よって,
-    \[
-      a_n=a_1+\frac{(l-1)l(4l+1)}{6}+l(n-l^2),
-      \qquad l=\left\lfloor\sqrt{n-1}\right\rfloor\ (n\ge2)
-    \]
+    \begin{align*}
+      &a_n=a_1+\frac{(l-1)l(4l+1)}{6}+l(n-l^2)\\
+      &l=\left\lfloor\sqrt{n-1}\right\rfloor\ (n\ge2)
+    \end{align*}
     が得られる.\,$\sqrt{}$の中に$n$が現れる漸化式でも,群数列の考え方を使えば一般項を具体的に表せるのである.
